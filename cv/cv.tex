@@ -4,111 +4,76 @@
 % License : MIT
 %------------------------
 
-\documentclass[letterpaper,11pt]{article}
+\documentclass[letterpaper,10pt]{article}
 
-\usepackage{latexsym}
-\usepackage[empty]{fullpage}
+\usepackage[T1]{fontenc}
+\usepackage{XCharter}            % text face
+\usepackage[scaled=0.95]{inconsolata}
+\usepackage[letterpaper, top=0.5in, bottom=0.5in, left=0.7in, right=0.7in]{geometry}
 \usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage{xcolor}
-\usepackage[colorlinks = true,
-linkcolor=violet,urlcolor=purple]{hyperref}
-\usepackage{fancyhdr}
-\usepackage[english]{babel}
-\usepackage{tabularx}
-\usepackage{bm}
-\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
 \input{glyphtounicode}
+\pdfgentounicode=1               % machine readable / ATS parsable
 
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
+\definecolor{accent}{HTML}{1A5FB4}   % same blue as the homepage
+\definecolor{muted}{HTML}{5B6470}
+\hypersetup{colorlinks=true, urlcolor=accent, linkcolor=accent,
+  pdftitle={Chaoyi Zhou - CV}, pdfauthor={Chaoyi Zhou}}
 
-% Adjust margins
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
-
+\pagestyle{empty}
 \raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 \setlength{\tabcolsep}{0in}
 
-% Sections formatting
-\titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+% Section headings: accent small caps with a thin rule
+\titleformat{\section}{\color{accent}\scshape\large\bfseries}{}{0em}{}[{\color{accent!35}\titlerule[0.6pt]}]
+\titlespacing*{\section}{0pt}{9pt}{5pt}
 
-% Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
+\setlist[itemize]{leftmargin=0.16in, itemsep=1pt, topsep=2pt, parsep=0pt, label={\small\textbullet}}
+\setlist[enumerate]{leftmargin=0.24in, itemsep=3pt, topsep=2pt, parsep=0pt, label={\color{muted}[\arabic*]}}
 
 %-------------------------
 % Custom commands
-\newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-2pt}}
-  }
-}
-
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeProjectHeading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & #2 \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
-
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\when}[1]{{\color{muted}#1}}
+% {left bold}{right date}{left italic}{right italic}
+\newcommand{\resumeSubheading}[4]{%
+  \par\vspace{3pt}\noindent
+  \begin{tabular*}{\textwidth}[t]{@{}l@{\extracolsep{\fill}}r@{}}
+    \textbf{#1} & \when{#2} \\
+    \textit{#3} & \textit{\color{muted}#4} \\
+  \end{tabular*}\par}
+\newcommand{\resumeItem}[1]{\item #1}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+\newcommand{\dated}[2]{\item #1 \hfill \when{#2}}
+\newcommand{\venue}[1]{\textbf{\color{accent}#1}}
+\newcommand{\me}{\textbf{Chaoyi Zhou}}
 
 %-------------------------------------------
 \begin{document}
 
 %----------HEADING----------
 \begin{center}
-    \textbf{\Large \scshape Zhou, Chaoyi} \\ \vspace{4pt}
+    {\Huge\bfseries Chaoyi Zhou} \\[6pt]
     \small
-    \textbf{Homepage}: \url{https://chaoyizh.github.io/chaoyizh-home-page/}
-    \\
-    \textbf{Google Scholar}: \url{https://scholar.google.com/citations?user=oEfDTB4AAAAJ}
-    \\
-    \textbf{Email}: \href{mailto:chaoyiz@clemson.edu}{chaoyiz@clemson.edu} $|$
-    \textbf{Phone}: (+1)206-734-9609 $|$  \textbf{Address}: 100 McAdams Hall, Clemson, SC 29634
-    \\
+    \href{mailto:chaoyiz@clemson.edu}{chaoyiz@clemson.edu}
+    \;{\color{muted}$\cdot$}\; (+1) 206-734-9609
+    \;{\color{muted}$\cdot$}\; 100 McAdams Hall, Clemson, SC 29634 \\[2pt]
+    \href{https://chaoyizh.github.io/chaoyizh-home-page/}{chaoyizh.github.io/chaoyizh-home-page}
+    \;{\color{muted}$\cdot$}\; \href{https://scholar.google.com/citations?user=oEfDTB4AAAAJ}{Google Scholar}
+    \;{\color{muted}$\cdot$}\; \href{https://github.com/ChaoyiZh}{github.com/ChaoyiZh}
+    \;{\color{muted}$\cdot$}\; \href{https://www.linkedin.com/in/chaoyi-zhou-313a3222a/}{LinkedIn}
 \end{center}
+\vspace{-4pt}
 
 \section{Research Interests}
-\small 3D and 4D reconstruction, scene representations, and geometric foundation models, with applications in general scene understanding and endoscopic video analysis.
-\normalsize
+3D and 4D reconstruction, scene representations, and geometric foundation models, with applications in general scene understanding and endoscopic video analysis.
 
 \section{Education}
-\begin{itemize}[leftmargin=0.15in, label={}]
 \resumeSubheading
 {Clemson University}{Jan 2024 -- Present}
 {Ph.D. in Computer Science}{Advisor: Prof. Siyu Huang}
@@ -120,10 +85,8 @@ linkcolor=violet,urlcolor=purple]{hyperref}
 \resumeSubheading
 {Nanjing University of Posts and Telecommunications}{Sep 2016 -- Jun 2020}
 {B.E. in Computer Science and Technology}{}
-\end{itemize}
 
 \section{Research Experience}
-\begin{itemize}[leftmargin=0.15in, label={}]
   \resumeSubheading
     {United Imaging Intelligence (UII) --- Research Intern}{May 2026 -- Present}
     {Mentors: Zhongpai Gao, Ziyan Wu}{}
@@ -144,80 +107,72 @@ linkcolor=violet,urlcolor=purple]{hyperref}
   \resumeItemListStart
     \resumeItem{\textbf{Latent Radiance Fields} (ICLR 2025); \textbf{3DGS-Enhancer} (NeurIPS 2024 Spotlight); \textbf{B\'ezier Splatting} (NeurIPS 2025); \textbf{Lang-SVG} (NeurIPS 2026).}
   \resumeItemListEnd
-\end{itemize}
 
 \section{Selected Publications}
-{\small *: equal contribution}
-\begin{enumerate}[leftmargin=0.25in]
-\small
+{\small\color{muted}* equal contribution}\vspace{2pt}
+\begin{enumerate}
 
-\item \textbf{Chaoyi Zhou}, Zhongpai Gao, Anwesa Choudhuri, Meng Zheng, Benjamin Planche, Run Wang, Terrence Chen, Siyu Huang, Ziyan Wu.
+\item \me, Zhongpai Gao, Anwesa Choudhuri, Meng Zheng, Benjamin Planche, Run Wang, Terrence Chen, Siyu Huang, Ziyan Wu.
 \textit{SCOPE-4D: Endoscopic 4D Geometry Foundation Models.}
-Preprint, 2026. \href{https://arxiv.org/abs/2610.02343}{arXiv:2610.02343}.
+{\color{muted}Preprint, 2026.} \href{https://arxiv.org/abs/2610.02343}{arXiv:2610.02343}.
 
-\item \textbf{Chaoyi Zhou}, Run Wang, Feng Luo, Mert D. Pes\'e, Zhiwen Fan, Yiqi Zhong, Siyu Huang.
+\item \me, Run Wang, Feng Luo, Mert D. Pes\'e, Zhiwen Fan, Yiqi Zhong, Siyu Huang.
 \textit{FF3R: Feed-forward Feature 3D Reconstruction from Unconstrained Views.}
-CVPR 2026 (Findings).
+\venue{CVPR 2026 (Findings)}.
 
-\item \textbf{Chaoyi Zhou*}, Xi Liu*, Feng Luo, Siyu Huang.
+\item \me*, Xi Liu*, Feng Luo, Siyu Huang.
 \textit{Latent Radiance Fields with 3D-aware 2D Representations.}
-ICLR 2025.
+\venue{ICLR 2025}.
 
-\item Xi Liu*, \textbf{Chaoyi Zhou*}, Siyu Huang.
+\item Xi Liu*, \me*, Siyu Huang.
 \textit{3DGS-Enhancer: Enhancing Unbounded 3D Gaussian Splatting with View-consistent 2D Diffusion Priors.}
-NeurIPS 2024 (Spotlight).
+\venue{NeurIPS 2024 (Spotlight)}.
 
 \end{enumerate}
 
 \section{Other Publications}
-\begin{enumerate}[leftmargin=0.25in, start=5]
-\small
+\begin{enumerate}[resume]
 
-\item Xi Liu, \textbf{Chaoyi Zhou}, Run Wang, Jiaang Li, Feng Luo, Junxiang Huang, Siyu Huang.
+\item Xi Liu, \me, Run Wang, Jiaang Li, Feng Luo, Junxiang Huang, Siyu Huang.
 \textit{Lang-SVG: Hierarchical Image Vectorization with Language Priors.}
-NeurIPS 2026.
+\venue{NeurIPS 2026}.
 
-\item Xi Liu*, \textbf{Chaoyi Zhou*}, Nanxuan Zhao, Siyu Huang.
+\item Xi Liu*, \me*, Nanxuan Zhao, Siyu Huang.
 \textit{B\'ezier Splatting for Fast and Differentiable Vector Graphics Rendering.}
-NeurIPS 2025.
+\venue{NeurIPS 2025}.
 
-\item Zhongpai Gao, Benjamin Planche, Meng Zheng, Anwesa Choudhuri, \textbf{Chaoyi Zhou}, Terrence Chen, Ziyan Wu.
+\item Zhongpai Gao, Benjamin Planche, Meng Zheng, Anwesa Choudhuri, \me, Terrence Chen, Ziyan Wu.
 \textit{XClipGS: Exact Half-Space Clipping for Medical Volume Gaussian Splatting.}
-Preprint, 2026. \href{https://arxiv.org/abs/2608.07760}{arXiv:2608.07760}.
+{\color{muted}Preprint, 2026.} \href{https://arxiv.org/abs/2608.07760}{arXiv:2608.07760}.
 
-\item Run Wang, \textbf{Chaoyi Zhou}, Xi Liu, Yi Zhu, Amir Salarpour, Pedram MohajerAnsari, Zhi-Qi Cheng, Feng Luo, Siyu Huang, Mert D. Pes\'e.
+\item Run Wang, \me, Xi Liu, Yi Zhu, Amir Salarpour, Pedram MohajerAnsari, Zhi-Qi Cheng, Feng Luo, Siyu Huang, Mert D. Pes\'e.
 \textit{Adversarial Prompts for Acceptance Collapse in Speculative Decoding.}
-Preprint, 2026. \href{https://arxiv.org/abs/2607.21804}{arXiv:2607.21804}.
+{\color{muted}Preprint, 2026.} \href{https://arxiv.org/abs/2607.21804}{arXiv:2607.21804}.
 
-\item Run Wang, \textbf{Chaoyi Zhou}, Amir Salarpour, Xi Liu, Zhi-Qi Cheng, Feng Luo, Mert D. Pes\'e, Siyu Huang.
+\item Run Wang, \me, Amir Salarpour, Xi Liu, Zhi-Qi Cheng, Feng Luo, Mert D. Pes\'e, Siyu Huang.
 \textit{FlexMap: Generalized HD Map Construction from Flexible Camera Configurations.}
-Preprint, 2026. \href{https://arxiv.org/abs/2601.22376}{arXiv:2601.22376}.
+{\color{muted}Preprint, 2026.} \href{https://arxiv.org/abs/2601.22376}{arXiv:2601.22376}.
 
 \end{enumerate}
 
 \section{Honors \& Awards}
-\begin{itemize}[leftmargin=0.3in]
-\small
-\item Rising Researcher Award, Clemson University \hfill Apr 2025
-\item ICLR Student Travel Award \hfill Mar 2025
+\begin{itemize}
+\dated{Rising Researcher Award, Clemson University}{Apr 2025}
+\dated{ICLR Student Travel Award}{Mar 2025}
 \end{itemize}
 
 \section{Invited Talks}
-\begin{itemize}[leftmargin=0.3in]
-\small
-\item \textit{From Images to Spatial Understanding}. Department of Computer Science, Boston College \hfill Oct 2026
-\item Clemson AI Research Symposium \hfill Apr 2026
+\begin{itemize}
+\dated{\textit{From Images to Spatial Understanding}. Department of Computer Science, Boston College}{Oct 2026}
+\dated{Clemson AI Research Symposium}{Apr 2026}
 \end{itemize}
 
 \section{Professional Service}
-\small
 \textbf{Conference Reviewer:}
 CVPR, ICCV, ECCV, WACV, ICLR, ICML, NeurIPS, AAAI, Eurographics
-\normalsize
 
 \section{Technical Skills}
-\begin{itemize}[leftmargin=0.15in, label={}]
-\small
+\begin{itemize}[label={}, leftmargin=0pt]
   \item \textbf{Programming:} Python, C++, CUDA
   \item \textbf{ML Frameworks:} PyTorch, JAX, TensorFlow
   \item \textbf{3D Vision \& Graphics:} Feed-forward 3D/4D Reconstruction, 3D Gaussian Splatting, NeRF, Differentiable Rendering

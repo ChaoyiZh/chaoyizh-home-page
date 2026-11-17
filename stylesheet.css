@@ -63,97 +63,125 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-a {
-  color: #1772d0;
-  text-decoration: none;
+:root {
+  --text: #1f2328;
+  --muted: #5b6470;
+  --accent: #1a5fb4;
+  --accent-hover: #c2410c;
+  --rule: #e3e7ec;
+  --soft: #f5f7fa;
 }
 
-a:focus,
-a:hover {
-  color: #f09228;
-  text-decoration: none;
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 28px 12px 48px;
+  color: var(--text);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
 }
 
-body,
-td,
-th,
-tr,
-p,
-a {
+body, td, th, tr, p, a, li {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.55;
 }
 
-strong {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
-}
+body > table { max-width: 900px !important; }
 
+a { color: var(--accent); text-decoration: none; }
+a:focus, a:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 3px; }
+
+strong { font-family: inherit; font-size: inherit; }
+
+/* Section headings */
 h2 {
   margin: 0;
-  font-weight: normal;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 22px;
-}
-
-.papertitle {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
   font-weight: 700;
-  color: #000000;
+  letter-spacing: 0.2px;
 }
+td:has(> h2:only-child) { padding-bottom: 8px !important; }
+h2 + p:not(.news-item) { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+h2 + .news-item { margin-top: 10px; }
 
+/* Intro */
 .name {
-  padding-top: 20px;
-  margin: 0;
+  margin: 0 0 8px;
+  padding-top: 0;
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 32px;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
 }
+.links { margin: 18px 0 0; text-align: center; }
+.links a {
+  display: inline-block;
+  margin: 3px 2px;
+  padding: 4px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-size: 14px;
+  transition: background-color .15s, border-color .15s;
+}
+.links a:hover { background: var(--soft); border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+/* Focus the existing photo on the face and upper body. */
+.profile-crop { display: block; width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; position: relative; box-shadow: 0 8px 28px rgba(20, 30, 50, .16); }
+.profile-crop img { position: absolute; width: 240%; max-width: none; height: auto; left: -84%; top: -42%; }
+
+/* News / awards: date column + text */
+.news-item { display: grid; grid-template-columns: 70px 1fr; column-gap: 12px; margin: 0; padding: 4px 0; }
+.news-item .date { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+.badge { display: inline-block; padding: 0 8px; border-radius: 999px; background: #fff1e6; color: var(--accent-hover); font-size: 12.5px; font-weight: 700; }
+.section-text { margin: 0 20px 12px; }
+
+/* Publications */
+.papertitle { font-family: 'Lato', Verdana, Helvetica, sans-serif; font-size: 16px; font-weight: 700; line-height: 1.35; color: #000; }
+#selected-publications td, #other-publications td { padding: 16px 20px !important; transition: background-color .15s; }
+#selected-publications tr:hover td, #other-publications tr:hover td { background: var(--soft); }
+#selected-publications td:first-child, #other-publications td:first-child { border-radius: 10px 0 0 10px; }
+#selected-publications td:last-child, #other-publications td:last-child { border-radius: 0 10px 10px 0; }
+#selected-publications td p, #other-publications td p { margin: 8px 0 0; color: #3d444d; font-size: 14.5px; }
 
 .one {
-  width: 160px;
-  height: 100px; /* 和图片、视频保持一致 */
+  width: 180px;
+  height: 112px; /* 和图片、视频保持一致 */
   position: relative;
   overflow: hidden; /* 防止超出 */
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 0 0 1px var(--rule);
 }
+.two { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.2s ease-in-out; }
+.one img, .one video { width: 100%; height: 100%; object-fit: contain; /* 确保视频和图片完整显示 */ }
 
-.two {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-}
-
-.one img, .one video {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* 确保视频和图片完整显示 */
-}
-
-
-.fade {
-  transition: opacity .2s ease-in-out;
-  -moz-transition: opacity .2s ease-in-out;
-  -webkit-transition: opacity .2s ease-in-out;
-}
-
-span.highlight {
-  background-color: #ffffd0;
-}
-/* Focus the existing photo on the face and upper body. */
-.profile-crop { display: block; width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; position: relative; }
-.profile-crop img { position: absolute; width: 240%; max-width: none; height: auto; left: -84%; top: -42%; }
-.section-text { margin: 0 20px 12px; }
-footer { padding: 28px 20px 0; text-align: right; }
-footer p, footer a { font-size: 12px; }
+.fade { transition: opacity .2s ease-in-out; }
+span.highlight { background-color: #ffffd0; }
 
 /* Make the page owner distinct from coauthor links. */
 .self-author { color: #111; font-weight: 700; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
 
 .scope-comparison { background: #fff; display: flex; flex-direction: column; justify-content: center; pointer-events: none; }
 .comparison-labels { display: flex; width: 100%; }
-.comparison-labels span { width: 50%; text-align: center; font-size: 11px; font-weight: 700; color: #111; }
-.one .scope-comparison video { width: 160px; height: 64px; object-fit: contain; }
+.comparison-labels span { width: 50%; text-align: center; font-size: 11px; font-weight: 700; color: #111; line-height: 1.3; }
+.one .scope-comparison video { width: 100%; height: auto; aspect-ratio: 5 / 2; object-fit: contain; }
+
+footer { padding: 28px 20px 0; text-align: right; }
+footer p, footer a { font-size: 12px; color: var(--muted); }
+
+/* Phones: stack photo and thumbnails above the text */
+@media (max-width: 640px) {
+  body { padding: 12px 4px 32px; }
+  td:has(> .name), td:has(> .profile-crop) { display: block; width: auto !important; max-width: none !important; }
+  tr:has(> td > .profile-crop) { display: flex; flex-direction: column-reverse; }
+  .profile-crop { max-width: 190px; margin: 8px auto 0; }
+  #selected-publications td, #other-publications td { display: block; width: auto !important; padding: 8px 16px !important; border-radius: 0 !important; }
+  #selected-publications tr, #other-publications tr { display: block; padding: 10px 0; }
+  .one { width: 100%; max-width: 320px; height: auto; aspect-ratio: 8 / 5; margin: 0 auto; }
+}
